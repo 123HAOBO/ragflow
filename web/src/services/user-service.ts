@@ -22,6 +22,8 @@ const {
   getSystemTokenList,
   removeSystemToken,
   createSystemToken,
+  register_api_Key,
+  find_api_key,
 } = api;
 
 const methods = {
@@ -100,6 +102,14 @@ const methods = {
   removeToken: {
     url: removeSystemToken,
     method: 'delete',
+  },
+  registerApiKey: {
+    url: register_api_Key,
+    method: 'get',
+  },
+  getApiKey: {
+    url: find_api_key,
+    method: 'get',
   },
 } as const;
 

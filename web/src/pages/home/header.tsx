@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
-import { Segmented, SegmentedValue } from '@/components/ui/segmented';
+import { Segmented, SegmentedValue } from '@/components/ui/segmented ';
 import { useTranslate } from '@/hooks/common-hooks';
 import { useNavigateWithFromState } from '@/hooks/route-hook';
 import {
@@ -67,7 +67,7 @@ export function HomeHeader() {
     <section className="py-[12px] flex justify-between items-center">
       <div className="flex items-center gap-4">
         <img
-          src={'/logo.svg'}
+          src={'/logo.png'}
           alt="logo"
           className="w-[100] h-[100] mr-[12]"
           onClick={handleLogoClick}

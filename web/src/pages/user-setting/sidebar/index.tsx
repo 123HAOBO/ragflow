@@ -59,6 +59,9 @@ const SideBar = () => {
   const handleMenuClick: MenuProps['onClick'] = ({ key }) => {
     if (key === UserSettingRouteKey.Logout) {
       logout();
+    }
+    if (key === UserSettingRouteKey.Api) {
+      navigate(`/${UserSettingBaseKey}/${UserSettingRouteKey.System}`);
     } else {
       navigate(`/${UserSettingBaseKey}/${key}`);
     }

@@ -32,6 +32,7 @@ from api.utils.file_utils import get_home_cache_dir
 from rag.utils import num_tokens_from_string, truncate
 import google.generativeai as genai
 import json
+from api.utils import get_base_config
 
 
 class Base(ABC):
@@ -108,6 +109,25 @@ class DefaultEmbedding(Base):
         token_count = num_tokens_from_string(text)
         return self._model.encode_queries([text]).tolist()[0], token_count
 
+class IDOpenAIEmbed(Base):
+    def __init__(self, key, model_name="mxbai-embed-large:latest",base_url="http://host.docker.internal:3000/v1"):
+        if not base_url:
+            oneApi = get_base_config('one-api', {})
+            base_url = oneApi.get('api', 'http://host.docker.internal:3000/v1')
+        self.client = OpenAI(api_key=key, base_url=base_url)
+        self.model_name = model_name
+
+    def encode(self, texts: list, batch_size=32):
+        texts = [truncate(t, 8191) for t in texts]
+        res = self.client.embeddings.create(input=texts,
+                                            model=self.model_name)
+        return np.array([d.embedding for d in res.data]
+                        ), res.usage.total_tokens
+
+    def encode_queries(self, text):
+        res = self.client.embeddings.create(input=[truncate(text, 8191)],
+                                            model=self.model_name)
+        return np.array(res.data[0].embedding), res.usage.total_tokens
 
 class OpenAIEmbed(Base):
     def __init__(self, key, model_name="text-embedding-ada-002",

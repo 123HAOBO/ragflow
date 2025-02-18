@@ -4,6 +4,7 @@ import { useTheme } from '@/components/theme-provider';
 import { LLMFactory } from '@/constants/llm';
 import { useSetModalState, useTranslate } from '@/hooks/common-hooks';
 import { LlmItem, useSelectLlmList } from '@/hooks/llm-hooks';
+import ApiKeyTitle from '@/pages/user-setting/components/api-key-title';
 import { getRealModelName } from '@/utils/llm-util';
 import { CloseCircleOutlined, SettingOutlined } from '@ant-design/icons';
 import {
@@ -94,31 +95,27 @@ const ModelCard = ({ item, clickApiKey }: IModelCardProps) => {
           <Col span={12} className={styles.factoryOperationWrapper}>
             <Space size={'middle'}>
               <Button onClick={handleApiKeyClick}>
-                <Flex align="center" gap={4}>
-                  {isLocalLlmFactory(item.name) ||
-                  item.name === LLMFactory.VolcEngine ||
-                  item.name === LLMFactory.TencentHunYuan ||
-                  item.name === LLMFactory.XunFeiSpark ||
-                  item.name === LLMFactory.BaiduYiYan ||
-                  item.name === LLMFactory.FishAudio ||
-                  item.name === LLMFactory.TencentCloud ||
-                  item.name === LLMFactory.GoogleCloud ||
-                  item.name === LLMFactory.AzureOpenAI
-                    ? t('addTheModel')
-                    : 'API-Key'}
-                  <SettingOutlined />
-                </Flex>
+                {isLocalLlmFactory(item.name) ||
+                item.name === 'VolcEngine' ||
+                item.name === 'Tencent Hunyuan' ||
+                item.name === 'XunFei Spark' ||
+                item.name === 'BaiduYiyan' ||
+                item.name === 'Fish Audio' ||
+                item.name === 'Tencent Cloud' ||
+                item.name === 'Google Cloud' ||
+                item.name === 'Azure OpenAI'
+                  ? t('addTheModel')
+                  : 'API-Key'}
+                <SettingOutlined />
               </Button>
               <Button onClick={handleShowMoreClick}>
-                <Flex align="center" gap={4}>
+                <Flex gap={'small'}>
                   {t('showMoreModels')}
                   <MoreModelIcon />
                 </Flex>
               </Button>
               <Button type={'text'} onClick={handleDeleteFactory}>
-                <Flex align="center">
-                  <CloseCircleOutlined style={{ color: '#D92D20' }} />
-                </Flex>
+                <CloseCircleOutlined style={{ color: '#D92D20' }} />
               </Button>
             </Space>
           </Col>
@@ -368,6 +365,7 @@ const UserSettingModel = () => {
             clickButton={showSystemSettingModal}
           ></SettingTitle>
           <Divider></Divider>
+          <ApiKeyTitle />
           <Collapse defaultActiveKey={['1', '2']} ghost items={items} />
         </section>
       </Spin>

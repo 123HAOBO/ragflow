@@ -11,6 +11,8 @@ export default {
   user_info: `${api_host}/user/info`,
   tenant_info: `${api_host}/user/tenant_info`,
   set_tenant_info: `${api_host}/user/set_tenant_info`,
+  find_api_key: `${api_host}/user/find_api_key`,
+  register_api_Key: `${api_host}/user/register_api_Key`,
 
   // team
   addTenantUser: (tenantId: string) => `${api_host}/tenant/${tenantId}/user`,
@@ -36,8 +38,6 @@ export default {
   update_kb: `${api_host}/kb/update`,
   rm_kb: `${api_host}/kb/rm`,
   get_kb_detail: `${api_host}/kb/detail`,
-  getKnowledgeGraph: (knowledgeId: string) =>
-    `${api_host}/kb/${knowledgeId}/knowledge_graph`,
 
   // tags
   listTag: (knowledgeId: string) => `${api_host}/kb/${knowledgeId}/tags`,
@@ -72,7 +72,6 @@ export default {
   document_infos: `${api_host}/document/infos`,
   upload_and_parse: `${api_host}/document/upload_and_parse`,
   parse: `${api_host}/document/parse`,
-  setMeta: `${api_host}/document/set_meta`,
 
   // chat
   setDialog: `${api_host}/dialog/set`,

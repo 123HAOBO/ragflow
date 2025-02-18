@@ -36,12 +36,14 @@ from api.utils import (
     download_img,
     current_timestamp,
     datetime_format,
+    get_base_config
 )
 from api.db import UserTenantRole, FileType
 from api import settings
 from api.db.services.user_service import UserService, TenantService, UserTenantService
 from api.db.services.file_service import FileService
 from api.utils.api_utils import get_json_result, construct_response
+import requests
 
 
 @manager.route("/login", methods=["POST", "GET"])  # noqa: F821
@@ -702,3 +704,51 @@ def set_tenant_info():
         return get_json_result(data=True)
     except Exception as e:
         return server_error_response(e)
+@manager.route("/register_api_Key", methods=["GET"])
+@login_required
+def register_api_Key():
+    req = request.args
+    remain_quota=req.get('remain_quota',500000)
+    models=req.get('models',"")
+    e,user=UserService.get_by_id(current_user.id)
+    # print(user.to_json())
+    oneAPi = get_base_config("one-api", {})
+    token = oneAPi.get('adminKey')
+    nickname=user.nickname
+    email=user.email
+    res=requests.post('http://host.docker.internal:3000/api/token/',json={
+        "name":nickname + ' ' +email,
+        "remain_quota":remain_quota,
+        "expired_time":-1,
+        "unlimited_quota":False,
+        "models":models,
+        "subnet":""
+    },headers={"Authorization":"Bearer "+'2b0e5ed8214a40699a4769f960fb9792'})
+    r=res.json()
+    log = logging.getLogger()
+    log.info(f"/user/register_api_Key one-api res {json}")
+    if r['success']:
+        data=r['data']
+        key=data['key']
+        api_key_id=data['id']
+        user.api_key=key
+        user.api_key_id=api_key_id
+        user.save()
+        return get_json_result(data={'key':key,'api_key_id':api_key_id})
+    return get_json_result(data={})
+
+@manager.route("/find_api_key", methods=["GET"])
+@login_required
+def find_api_key():
+    oneAPi = get_base_config("one-api", {})
+    token = oneAPi.get('adminKey')
+    e, user = UserService.get_by_id(current_user.id)
+    if user.api_key_id :
+        res = requests.get('http://host.docker.internal:3000/api/token/' + str(user.api_key_id), headers={
+            "Authorization": "Bearer " + '2b0e5ed8214a40699a4769f960fb9792'
+        })
+        json=res.json()
+        log=logging.getLogger()
+        log.info(f"/user/find_api_key one-api res {json}")
+        return get_json_result(data=res.json()['data'])
+    return get_json_result(data=False)

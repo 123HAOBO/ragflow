@@ -15,7 +15,6 @@ export default {
       edit: '编辑',
       upload: '上传',
       english: '英文',
-      portugueseBr: '葡萄牙语 (巴西)',
       chinese: '简体中文',
       traditionalChinese: '繁体中文',
       language: '语言',
@@ -39,7 +38,7 @@ export default {
       nextPage: '下一页',
     },
     login: {
-      login: '登录',
+      login: '登录企业AI知识库',
       signUp: '注册',
       loginDescription: '很高兴再次见到您！',
       registerDescription: '很高兴您加入！',
@@ -54,10 +53,9 @@ export default {
       nicknamePlaceholder: '请输入名称',
       register: '创建账户',
       continue: '继续',
-      title: '开始构建您的智能助手',
-      description:
-        '免费注册以探索顶级 RAG 技术。 创建知识库和人工智能来增强您的业务',
-      review: '来自 500 多条评论',
+      title: '开始构建您的智能助理',
+      description: '创建知识库和人工智能来增强您的业务',
+      review: '',
     },
     header: {
       knowledgeBase: '知识库',
@@ -85,7 +83,6 @@ export default {
       dataset: '数据集',
       testing: '检索测试',
       configuration: '配置',
-      knowledgeGraph: '知识图谱',
       files: '文件',
       name: '名称',
       namePlaceholder: '请输入名称',
@@ -136,6 +133,7 @@ export default {
       fromMessage: '缺少起始页码',
       toPlaceholder: '到',
       toMessage: '缺少结束页码（不包含）',
+      layoutRecognize: '布局识别',
       layoutRecognize: '文档解析器',
       layoutRecognizeTip:
         '使用视觉模型进行布局分析，以更好地识别文档结构，找到标题、文本块、图像和表格的位置。 如果没有此功能，则只能获取 PDF 的纯文本。',
@@ -199,7 +197,7 @@ export default {
       name: '知识库名称',
       photo: '知识库图片',
       description: '描述',
-      language: '文档语言',
+      language: '语言',
       languageMessage: '请输入语言',
       languagePlaceholder: '请输入语言',
       permissions: '权限',
@@ -227,50 +225,50 @@ export default {
       dialogueExamplesTitle: '对话示例',
       methodEmpty: '这将显示知识库类别的可视化解释',
       book: `<p>支持的文件格式为<b>DOCX</b>、<b>PDF</b>、<b>TXT</b>。</p><p>
-      由于一本书很长，并不是所有部分都有用，如果是 PDF，
-      请为每本书设置<i>页面范围</i>，以消除负面影响并节省分析计算时间。</p>`,
+        由于一本书很长，并不是所有部分都有用，如果是 PDF，
+        请为每本书设置<i>页面范围</i>，以消除负面影响并节省分析计算时间。</p>`,
       laws: `<p>支持的文件格式为<b>DOCX</b>、<b>PDF</b>、<b>TXT</b>。</p><p>
-      法律文件有非常严格的书写格式。 我们使用文本特征来检测分割点。
-      </p><p>
-      chunk的粒度与'ARTICLE'一致，所有上层文本都会包含在chunk中。
-      </p>`,
+        法律文件有非常严格的书写格式。 我们使用文本特征来检测分割点。
+        </p><p>
+        chunk的粒度与'ARTICLE'一致，所有上层文本都会包含在chunk中。
+        </p>`,
       manual: `<p>仅支持<b>PDF</b>。</p><p>
-      我们假设手册具有分层部分结构。 我们使用最低的部分标题作为对文档进行切片的枢轴。
-      因此，同一部分中的图和表不会被分割，并且块大小可能会很大。
-      </p>`,
+        我们假设手册具有分层部分结构。 我们使用最低的部分标题作为对文档进行切片的枢轴。
+        因此，同一部分中的图和表不会被分割，并且块大小可能会很大。
+        </p>`,
       naive: `<p>支持的文件格式为<b>DOCX、EXCEL、PPT、IMAGE、PDF、TXT、MD、JSON、EML、HTML</b>。</p>
-      <p>此方法将简单的方法应用于块文件：</p>
-      <p>
-      <li>系统将使用视觉检测模型将连续文本分割成多个片段。</li>
-      <li>接下来，这些连续的片段被合并成Token数不超过“Token数”的块。</li></p>`,
+        <p>此方法将简单的方法应用于块文件：</p>
+        <p>
+        <li>系统将使用视觉检测模型将连续文本分割成多个片段。</li>
+        <li>接下来，这些连续的片段被合并成Token数不超过“Token数”的块。</li></p>`,
       paper: `<p>仅支持<b>PDF</b>文件。</p><p>
-      如果我们的模型运行良好，论文将按其部分进行切片，例如<i>摘要、1.1、1.2</i>等。</p><p>
-      这样做的好处是LLM可以更好的概括论文中相关章节的内容，
-      产生更全面的答案，帮助读者更好地理解论文。
-      缺点是它增加了 LLM 对话的背景并增加了计算成本，
-      所以在对话过程中，你可以考虑减少‘<b>topN</b>’的设置。</p>`,
+        如果我们的模型运行良好，论文将按其部分进行切片，例如<i>摘要、1.1、1.2</i>等。</p><p>
+        这样做的好处是LLM可以更好的概括论文中相关章节的内容，
+        产生更全面的答案，帮助读者更好地理解论文。
+        缺点是它增加了 LLM 对话的背景并增加了计算成本，
+        所以在对话过程中，你可以考虑减少‘<b>topN</b>’的设置。</p>`,
       presentation: `<p>支持的文件格式为<b>PDF</b>、<b>PPTX</b>。</p><p>
-      每个页面都将被视为一个块。 并且每个页面的缩略图都会被存储。</p><p>
-      <i>您上传的所有PPT文件都会使用此方法自动分块，无需为每个PPT文件进行设置。</i></p>`,
+        每个页面都将被视为一个块。 并且每个页面的缩略图都会被存储。</p><p>
+        <i>您上传的所有PPT文件都会使用此方法自动分块，无需为每个PPT文件进行设置。</i></p>`,
       qa: ` <p>
-      此块方法支持<b> excel </b>和<b> csv/txt </b>文件格式。
-    </p>
-    <li>
-      如果文件是<b> excel </b>格式，则应由两个列组成
-      没有标题：一个提出问题，另一个用于答案，
-      答案列之前的问题列。多张纸是
-      只要列正确结构，就可以接受。
-    </li>
-    <li>
-      如果文件是<b> csv/txt </b>格式
-      以 UTF-8 编码且用 TAB 作分开问题和答案的定界符。
-    </li>
-    <p>
-      <i>
-        未能遵循上述规则的文本行将被忽略，并且
-        每个问答对将被认为是一个独特的部分。
-      </i>
-    </p>`,
+        此块方法支持<b> excel </b>和<b> csv/txt </b>文件格式。
+      </p>
+      <li>
+        如果文件以<b> excel </b>格式，则应由两个列组成
+        没有标题：一个提出问题，另一个用于答案，
+        答案列之前的问题列。多张纸是
+        只要列正确结构，就可以接受。
+      </li>
+      <li>
+        如果文件以<b> csv/txt </b>格式为
+        用作分开问题和答案的定界符。
+      </li>
+      <p>
+        <i>
+          未能遵循上述规则的文本行将被忽略，并且
+          每个问答对将被认为是一个独特的部分。
+        </i>
+      </p>`,
       resume: `<p>支持的文件格式为<b>DOCX</b>、<b>PDF</b>、<b>TXT</b>。
       </p><p>
       简历有多种格式，就像一个人的个性一样，但我们经常必须将它们组织成结构化数据，以便于搜索。
@@ -296,25 +294,25 @@ export default {
     <li>表中的每一行都将被视为一个块。</li>
     </ul>`,
       picture: `
-      <p>支持图像文件。 视频即将推出。</p><p>
-      如果图片中有文字，则应用 OCR 提取文字作为其文字描述。
-      </p><p>
-      如果OCR提取的文本不够，可以使用视觉LLM来获取描述。
-      </p>`,
+        <p>支持图像文件。 视频即将推出。</p><p>
+        如果图片中有文字，则应用 OCR 提取文字作为其文字描述。
+        </p><p>
+        如果OCR提取的文本不够，可以使用视觉LLM来获取描述。
+        </p>`,
       one: `
-      <p>支持的文件格式为<b>DOCX、EXCEL、PDF、TXT</b>。
-      </p><p>
-      对于一个文档，它将被视为一个完整的块，根本不会被分割。
-      </p><p>
-      如果你要总结的东西需要一篇文章的全部上下文，并且所选LLM的上下文长度覆盖了文档长度，你可以尝试这种方法。
-      </p>`,
+        <p>支持的文件格式为<b>DOCX、EXCEL、PDF、TXT</b>。
+        </p><p>
+        对于一个文档，它将被视为一个完整的块，根本不会被分割。
+        </p><p>
+        如果你要总结的东西需要一篇文章的全部上下文，并且所选LLM的上下文长度覆盖了文档长度，你可以尝试这种方法。
+        </p>`,
       knowledgeGraph: `<p>支持的文件格式为<b>DOCX、EXCEL、PPT、IMAGE、PDF、TXT、MD、JSON、EML</b>
-
-<p>文件分块后，使用分块提取整个文档的知识图谱和思维导图。此方法将简单的方法应用于分块文件：
-连续的文本将被切成大约 512 个 token 数的块。</p>
-<p>接下来，将分块传输到 LLM 以提取知识图谱和思维导图的节点和关系。</p>
-
-注意您需要指定的条目类型。</p>`,
+  
+  <p>文件分块后，使用分块提取整个文档的知识图谱和思维导图。此方法将简单的方法应用于分块文件：
+  连续的文本将被切成大约 512 个 token 数的块。</p>
+  <p>接下来，将分块传输到 LLM 以提取知识图谱和思维导图的节点和关系。</p>
+  
+  注意您需要指定的条目类型。</p>`,
       tag: `<p>使用“标签”作为分块方法的知识库应该被其他知识库使用，以将标签添加到其块中，对这些块的查询也将带有标签。</p>
 <p>使用“标签”作为分块方法的知识库<b>不</b>应该参与 RAG 过程。</p>
 <p>此知识库中的块是标签的示例，它们演示了整个标签集以及块和标签之间的相关性。</p>
@@ -330,8 +328,8 @@ export default {
       prompt: '提示词',
       promptMessage: '提示词是必填项',
       promptText: `请总结以下段落。 小心数字，不要编造。 段落如下：
-      {cluster_content}
-以上就是你需要总结的内容。`,
+        {cluster_content}
+  以上就是你需要总结的内容。`,
       maxToken: '最大token数',
       maxTokenMessage: '最大token数是必填项',
       threshold: '阈值',
@@ -347,7 +345,7 @@ export default {
       entityTypes: '实体类型',
       pageRank: '页面排名',
       pageRankTip: `这用于提高相关性得分。所有检索到的块的相关性得分将加上此数字。
-当您想首先搜索给定的知识库时，请设置比其他知识库更高的 pagerank 得分。`,
+  当您想首先搜索给定的知识库时，请设置比其他知识库更高的 pagerank 得分。`,
       tagName: '标签',
       frequency: '频次',
       searchTags: '搜索标签',
@@ -356,29 +354,18 @@ export default {
       tagSet: '标签库',
       topnTags: 'Top-N 标签',
       tagSetTip: `
-      <p> 选择“标签”知识库有助于标记每个块。 </p>
-      <p>对这些块的查询也将带有标签。 </p>
-      此过程将通过向数据集添加更多信息来提高检索的准确性，尤其是在存在大量块的情况下。
-      <p>标签和关键字之间的区别：</p>
-      <ul>
-      <li>标签是一个由用户定义和操作的封闭集，而关键字是一个开放集。 </li>
-      <li>您需要在使用前上传带有样本的标签集。 </li>
-      <li>关键字由 LLM 生成，这既昂贵又耗时。 </li>
-      </ul>
-      `,
+        <p> 选择“标签”知识库有助于标记每个块。 </p>
+        <p>对这些块的查询也将带有标签。 </p>
+        此过程将通过向数据集添加更多信息来提高检索的准确性，尤其是在存在大量块的情况下。
+        <p>标签和关键字之间的区别：</p>
+        <ul>
+        <li>标签是一个由用户定义和操作的封闭集，而关键字是一个开放集。 </li>
+        <li>您需要在使用前上传带有样本的标签集。 </li>
+        <li>关键字由 LLM 生成，这既昂贵又耗时。 </li>
+        </ul>
+        `,
       tags: '标签',
       addTag: '增加标签',
-      useGraphRag: '提取知识图谱',
-      useGraphRagTip:
-        '文件分块后，所有块将用于知识图谱生成，这对多跳和复杂问题的推理大有帮助。',
-      graphRagMethod: '方法',
-      graphRagMethodTip: `Light：实体和关系提取提示来自 GitHub - HKUDS/LightRAG：“LightRAG：简单快速的检索增强生成”<br>
-General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于图形的模块化检索增强生成 (RAG) 系统`,
-      resolution: '实体归一化',
-      resolutionTip: `解析过程会将具有相同含义的实体合并在一起，从而使知识图谱更简洁、更准确。应合并以下实体：特朗普总统、唐纳德·特朗普、唐纳德·J·特朗普、唐纳德·约翰·特朗普`,
-      community: '社区报告生成',
-      communityTip:
-        '区块被聚集成层次化的社区，实体和关系通过更高抽象层次将每个部分连接起来。然后，我们使用 LLM 生成每个社区的摘要，称为社区报告。更多信息：https://www.microsoft.com/en-us/research/blog/graphrag-improving-global-search-via-dynamic-community-selection/',
     },
     chunk: {
       chunk: '解析块',
@@ -429,9 +416,9 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       knowledgeBasesTip: '选择关联的知识库。',
       system: '系统',
       systemInitialValue: `你是一个智能助手，请总结知识库的内容来回答问题，请列举知识库中的数据详细回答。当所有知识库内容都与问题无关时，你的回答必须包括“知识库中未找到您要的答案！”这句话。回答需要考虑聊天历史。
-        以下是知识库：
-        {knowledge}
-        以上是知识库。`,
+          以下是知识库：
+          {knowledge}
+          以上是知识库。`,
       systemMessage: '请输入',
       systemTip:
         '当LLM回答问题时，你需要LLM遵循的说明，比如角色设计、答案长度和答案语言等。',
@@ -439,9 +426,9 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       topNTip: `并非所有相似度得分高于“相似度阈值”的块都会被提供给大语言模型。 LLM 只能看到这些“Top N”块。`,
       variable: '变量',
       variableTip: `如果您使用对话 API，变量可能会帮助您使用不同的策略与客户聊天。
-      这些变量用于填写提示中的“系统”部分，以便给LLM一个提示。
-      “知识”是一个非常特殊的变量，它将用检索到的块填充。
-      “System”中的所有变量都应该用大括号括起来。`,
+        这些变量用于填写提示中的“系统”部分，以便给LLM一个提示。
+        “知识”是一个非常特殊的变量，它将用检索到的块填充。
+        “System”中的所有变量都应该用大括号括起来。`,
       add: '新增',
       key: '关键字',
       optional: '可选的',
@@ -777,8 +764,8 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       switchDescription: `该组件用于根据前面组件的输出评估条件，并相应地引导执行流程。通过定义各种情况并指定操作，或在不满足条件时采取默认操作，实现复杂的分支逻辑。`,
       wikipediaDescription: `此组件用于从 https://www.wikipedia.org/ 获取搜索结果。通常，它作为知识库的补充。Top N 指定您需要调整的搜索结果数量。`,
       promptText: `请总结以下段落。注意数字，不要胡编乱造。段落如下：
-{input}
-以上就是你需要总结的内容。`,
+  {input}
+  以上就是你需要总结的内容。`,
       createGraph: '创建 Agent',
       createFromTemplates: '从模板创建',
       retrieval: '知识检索',
@@ -1116,8 +1103,7 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       pasteFileLink: '粘贴文件链接',
       testRun: '试运行',
       template: '模板转换',
-      templateDescription:
-        '该组件用于排版各种组件的输出。1、支持Jinja2模板,会先将输入转为对象后进行模版渲染2、同时保留原使用{参数}字符串替换的方式',
+      templateDescription: '该组件用于排版各种组件的输出。',
       emailComponent: '邮件',
       emailDescription: '发送邮件到指定邮箱',
       smtpServer: 'SMTP服务器',
@@ -1146,8 +1132,8 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
       jsonUploadContentErrorMessage: 'json 文件错误',
       iteration: '循环',
       iterationDescription: `该组件首先将输入以“分隔符”分割成数组，然后依次对数组中的元素执行相同的操作步骤，直到输出所有结果，可以理解为一个任务批处理器。
-
-例如在长文本翻译迭代节点中，如果所有内容都输入到LLM节点，可能会达到单次对话的限制，上游节点可以先将长文本分割成多个片段，配合迭代节点对每个片段进行批量翻译，避免达到单次对话的LLM消息限制。`,
+  
+  例如在长文本翻译迭代节点中，如果所有内容都输入到LLM节点，可能会达到单次对话的限制，上游节点可以先将长文本分割成多个片段，配合迭代节点对每个片段进行批量翻译，避免达到单次对话的LLM消息限制。`,
       delimiterTip: `该分隔符用于将输入文本分割成几个文本片段，每个文本片段的回显将作为每次迭代的输入项。`,
       delimiterOptions: {
         comma: '逗号',
@@ -1155,7 +1141,7 @@ General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于
         tab: '制表符',
         underline: '下划线',
         diagonal: '斜线',
-        minus: '连字符',
+        minus: '减号',
         semicolon: '分号',
       },
       addCategory: '新增分类',

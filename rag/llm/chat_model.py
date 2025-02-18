@@ -28,6 +28,7 @@ import os
 import json
 import requests
 import asyncio
+from api.utils import get_base_config
 
 LENGTH_NOTIFICATION_CN = "······\n由于长度的原因，回答被截断了，要继续吗？"
 LENGTH_NOTIFICATION_EN = "...\nFor the content length reason, it stopped, continue?"
@@ -112,6 +113,12 @@ class Base(ABC):
             pass
         return 0
 
+class IdealGptTurbo(Base):
+    def __init__(self, key, model_name="deepseek-r1:7b", base_url="http://host.docker.internal:3000/v1"):
+        if not base_url:
+            oneApi=get_base_config('one-api',{})
+            base_url=oneApi.get('api','http://host.docker.internal:3000/v1')
+        super().__init__(key, model_name, base_url)
 
 class GptTurbo(Base):
     def __init__(self, key, model_name="gpt-3.5-turbo", base_url="https://api.openai.com/v1"):
@@ -975,13 +982,6 @@ class OpenAI_APIChat(Base):
         super().__init__(key, model_name, base_url)
 
 
-class PPIOChat(Base):
-    def __init__(self, key, model_name, base_url="https://api.ppinfra.com/v3/openai"):
-        if not base_url:
-            base_url = "https://api.ppinfra.com/v3/openai"
-        super().__init__(key, model_name, base_url)
-
-
 class CoHereChat(Base):
     def __init__(self, key, model_name, base_url=""):
         from cohere import Client
@@ -1411,7 +1411,7 @@ class GoogleChat(Base):
         from google.oauth2 import service_account
         import base64
 
-        key = json.loads(key)
+        key = json.load(key)
         access_token = json.loads(
             base64.b64decode(key.get("google_service_account_key", ""))
         )

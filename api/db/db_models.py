@@ -476,7 +476,8 @@ class User(DataBaseModel, UserMixin):
         default="1",
         index=True)
     is_superuser = BooleanField(null=True, help_text="is root", default=False, index=True)
-
+    api_key=CharField(null=True)
+    api_key_id=IntegerField(null=True)
     def __str__(self):
         return self.email
 

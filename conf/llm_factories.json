@@ -1,6 +1,28 @@
 {
     "factory_llm_infos": [
         {
+            "name": "埃典科技(ideal2077.com)",
+            "logo": "",
+            "tags": "LLM,TEXT EMBEDDING",
+            "status": "1",
+            "llm": [
+                {
+                    "llm_name": "deepseek-r1:7b",
+                    "tags": "LLM,CHAT",
+                    "model_type": "chat"
+                },{
+                    "llm_name": "deepseek-r1:32b",
+                    "tags": "LLM,CHAT",
+                    "model_type": "chat"
+                },
+                {
+                    "llm_name": "mxbai-embed-large:latest",
+                    "tags": "TEXT EMBEDDING",
+                    "model_type": "embedding"
+                }
+            ]
+        },
+        {
             "name": "OpenAI",
             "logo": "",
             "tags": "LLM,TEXT EMBEDDING,TTS,TEXT RE-RANK,SPEECH2TEXT,MODERATION",

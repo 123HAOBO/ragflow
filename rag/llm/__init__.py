@@ -16,6 +16,7 @@
 #  AFTER UPDATING THIS FILE, PLEASE ENSURE THAT docs/references/supported_models.mdx IS ALSO UPDATED for consistency!
 #
 from .embedding_model import (
+    IDOpenAIEmbed,
     OllamaEmbed,
     LocalAIEmbed,
     OpenAIEmbed,
@@ -47,6 +48,7 @@ from .embedding_model import (
     GPUStackEmbed,
 )
 from .chat_model import (
+    IdealGptTurbo,
     GptTurbo,
     AzureChat,
     ZhipuChat,
@@ -75,7 +77,6 @@ from .chat_model import (
     UpstageChat,
     NovitaAIChat,
     SILICONFLOWChat,
-    PPIOChat,
     YiChat,
     ReplicateChat,
     HunyuanChat,
@@ -142,6 +143,7 @@ from .tts_model import (
 )
 
 EmbeddingModel = {
+    "埃典科技(ideal2077.com)": IDOpenAIEmbed,
     "Ollama": OllamaEmbed,
     "LocalAI": LocalAIEmbed,
     "OpenAI": OpenAIEmbed,
@@ -196,6 +198,7 @@ CvModel = {
 }
 
 ChatModel = {
+    "埃典科技(ideal2077.com)": IdealGptTurbo,
     "OpenAI": GptTurbo,
     "Azure-OpenAI": AzureChat,
     "ZHIPU-AI": ZhipuChat,
@@ -225,7 +228,6 @@ ChatModel = {
     "Upstage": UpstageChat,
     "novita.ai": NovitaAIChat,
     "SILICONFLOW": SILICONFLOWChat,
-    "PPIO": PPIOChat,
     "01.AI": YiChat,
     "Replicate": ReplicateChat,
     "Tencent Hunyuan": HunyuanChat,

@@ -6,9 +6,9 @@ import { useTranslation } from 'react-i18next';
 import { Icon, useNavigate } from 'umi';
 import RightPanel from './right-panel';
 
+import logo from '@/assets/logo-with-text.svg';
 import { Domain } from '@/constants/common';
 import styles from './index.less';
-
 const Login = () => {
   const [title, setTitle] = useState('login');
   const navigate = useNavigate();
@@ -68,6 +68,9 @@ const Login = () => {
     <div className={styles.loginPage}>
       <div className={styles.loginLeft}>
         <div className={styles.leftContainer}>
+          <img src={logo} alt="Company Logo" className={styles.logo} />{' '}
+          {/* 添加公司 logo */}
+          <div className={styles.companyName}></div>
           <div className={styles.loginTitle}>
             <div>{title === 'login' ? t('login') : t('register')}</div>
             <span>
@@ -76,7 +79,6 @@ const Login = () => {
                 : t('registerDescription')}
             </span>
           </div>
-
           <Form
             form={form}
             layout="vertical"

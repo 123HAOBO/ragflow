@@ -153,7 +153,7 @@ const EmbedModal = ({
       >
         {token}
       </Paragraph>
-      <Link
+      {/* <Link
         href={
           isAgent
             ? 'https://ragflow.io/docs/dev/http_api_reference#create-session-with-agent'
@@ -162,7 +162,7 @@ const EmbedModal = ({
         target="_blank"
       >
         {t('howUseId', { keyPrefix: isAgent ? 'flow' : 'chat' })}
-      </Link>
+      </Link> */}
     </Modal>
   );
 };
