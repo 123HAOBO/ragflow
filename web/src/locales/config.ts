@@ -1,7 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import { LanguageAbbreviation } from '@/constants/common';
 import translation_en from './en';
 import translation_es from './es';
 import translation_id from './id';
@@ -19,7 +18,6 @@ const resources = {
   ja: translation_ja,
   es: translation_es,
   vi: translation_vi,
-  'pt-BR': translation_pt_br,
 };
 const enFlattened = flattenObject(translation_en);
 const viFlattened = flattenObject(translation_vi);
@@ -38,28 +36,18 @@ export const translationTable = createTranslationTable(
   ],
   ['English', 'Vietnamese', 'Spanish', 'zh', 'zh-TRADITIONAL', 'ja'],
 );
-i18n
-  .use(initReactI18next)
-  .use(LanguageDetector)
-  .init({
-    detection: {
-      lookupLocalStorage: 'lng',
-    },
-    supportedLngs: [
-      'en',
-      'zh',
-      'zh-TRADITIONAL',
-      'id',
-      'es',
-      'vi',
-      'ja',
-      'pt-BR',
-    ],
-    resources,
-    fallbackLng: 'en',
-    interpolation: {
-      escapeValue: false,
-    },
-  });
+i18n.use(initReactI18next).init({
+  detection: {
+    // 禁用所有语言检测功能
+    enabled: false,
+  },
+  lng: 'zh', // 强制使用简体中文，若需要繁体中文则设置为 'zh-TRADITIONAL'
+  supportedLngs: ['zh', 'zh-TRADITIONAL'],
+  resources,
+  fallbackLng: 'zh', // 如果有未知错误，默认回退为中文
+  interpolation: {
+    escapeValue: false,
+  },
+});
 
 export default i18n;
