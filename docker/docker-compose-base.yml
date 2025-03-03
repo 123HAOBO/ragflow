@@ -84,7 +84,7 @@ services:
     ports:
       - ${MYSQL_PORT}:3306
     volumes:
-      - mysql_data:/var/lib/mysql
+      - /mnt/raid1/ragflow_mysql:/var/lib/mysql
       - ./init.sql:/data/application/init.sql
     networks:
       - ragflow

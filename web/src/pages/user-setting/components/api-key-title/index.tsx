@@ -1,3 +1,4 @@
+import { useSaveApiKey } from '@/hooks/llm-hooks';
 import userService from '@/services/user-service';
 import { CopyOutlined } from '@ant-design/icons';
 import { Button, Col, Row, Statistic, message } from 'antd';
@@ -11,6 +12,7 @@ export interface ApiKey {
   expired_time?: number;
 }
 const ApiKeyTitle = () => {
+  const { saveApiKey } = useSaveApiKey();
   const [apiKey, setApiKey] = useState<ApiKey>();
   const [loading, setLoading] = useState<boolean>(false);
   const loadApiKey = () => {
@@ -21,8 +23,19 @@ const ApiKeyTitle = () => {
         if (res.data?.data) {
           //console.log(res.data)
           setApiKey(res.data?.data);
+          saveApiKey({
+            llm_factory: '埃典科技(ideal2077.com)',
+            api_key: res.data?.data.key,
+          })
+            .then(() => {
+              setLoading(false);
+            })
+            .catch(() => {
+              setLoading(false);
+            });
+        } else {
+          setLoading(false);
         }
-        setLoading(false);
       })
       .catch(() => {
         setLoading(false);
