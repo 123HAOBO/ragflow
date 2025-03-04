@@ -1,4 +1,5 @@
 export enum LLMFactory {
+  'Ideal' = 'Ideal',
   TongYiQianWen = 'Tongyi-Qianwen',
   Moonshot = 'Moonshot',
   OpenAI = 'OpenAI',
@@ -53,6 +54,7 @@ export enum LLMFactory {
 
 // Please lowercase the file name
 export const IconMap = {
+  [LLMFactory.Ideal]: 'ideal',
   [LLMFactory.TongYiQianWen]: 'tongyi',
   [LLMFactory.Moonshot]: 'moonshot',
   [LLMFactory.OpenAI]: 'openai',

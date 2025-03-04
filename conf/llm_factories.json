@@ -1,25 +1,43 @@
 {
     "factory_llm_infos": [
         {
-            "name": "埃典科技(ideal2077.com)",
+            "name": "Ideal",
             "logo": "",
-            "tags": "LLM,TEXT EMBEDDING",
+            "tags": "LLM,TEXT EMBEDDING,TTS",
             "status": "1",
             "llm": [
                 {
-                    "llm_name": "deepseek-r1:7b",
-                    "tags": "LLM,CHAT",
-                    "model_type": "chat"
-                },{
-                    "llm_name": "deepseek-r1:32b",
+                    "llm_name": "ideal-v1:7b（对话型fast）",
                     "tags": "LLM,CHAT",
                     "model_type": "chat"
                 },
                 {
-                    "llm_name": "mxbai-embed-large:latest",
-                    "tags": "TEXT EMBEDDING",
-                    "model_type": "embedding"
+                    "llm_name": "ideal-v1:14b（对话型擅长中文）",
+                    "tags": "LLM,CHAT",
+                    "model_type": "chat"
+                },{
+                    "llm_name": "ideal:14b（对话型擅长英文）",
+                    "tags": "LLM,CHAT",
+                    "model_type": "chat"
+                },{
+                    "llm_name": "ideal-r1:32b（推理型）",
+                    "tags": "LLM,CHAT",
+                    "model_type": "chat"
+                },
+                {
+                    "llm_name": "ideal-r1:7b（推理型fast）",
+                    "tags": "LLM,CHAT",
+                    "model_type": "chat"
+                }, {
+                    "llm_name": "ideal-tts",
+                    "tags": "TTS",
+                    "model_type": "tts"
+                },{
+                    "llm_name": "ideal-llm（对话型fast）",
+                    "tags": "TTS",
+                    "model_type": "tts"
                 }
+                
             ]
         },
         {
@@ -318,13 +336,6 @@
             "llm": []
         },
         {
-            "name": "ModelScope",
-            "logo": "",
-            "tags": "LLM",
-            "status": "1",
-            "llm": []
-        },
-        {
             "name": "LocalAI",
             "logo": "",
             "tags": "LLM,TEXT EMBEDDING,SPEECH2TEXT,MODERATION",
@@ -333,13 +344,6 @@
         },
         {
             "name": "OpenAI-API-Compatible",
-            "logo": "",
-            "tags": "LLM,TEXT EMBEDDING,SPEECH2TEXT,MODERATION",
-            "status": "1",
-            "llm": []
-        },
-        {
-            "name": "VLLM",
             "logo": "",
             "tags": "LLM,TEXT EMBEDDING,SPEECH2TEXT,MODERATION",
             "status": "1",

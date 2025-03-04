@@ -15,6 +15,7 @@ export default {
       edit: '编辑',
       upload: '上传',
       english: '英文',
+      portugueseBr: '葡萄牙语 (巴西)',
       chinese: '简体中文',
       traditionalChinese: '繁体中文',
       language: '语言',
@@ -83,6 +84,7 @@ export default {
       dataset: '数据集',
       testing: '检索测试',
       configuration: '配置',
+      knowledgeGraph: '知识图谱',
       files: '文件',
       name: '名称',
       namePlaceholder: '请输入名称',
@@ -133,7 +135,6 @@ export default {
       fromMessage: '缺少起始页码',
       toPlaceholder: '到',
       toMessage: '缺少结束页码（不包含）',
-      layoutRecognize: '布局识别',
       layoutRecognize: '文档解析器',
       layoutRecognizeTip:
         '使用视觉模型进行布局分析，以更好地识别文档结构，找到标题、文本块、图像和表格的位置。 如果没有此功能，则只能获取 PDF 的纯文本。',
@@ -169,24 +170,24 @@ export default {
       setMetaData: '设置元数据',
       pleaseInputJson: '请输入JSON',
       documentMetaTips: `<p>元数据为 Json 格式（不可搜索）。如果提示中包含此文档的任何块，它将被添加到 LLM 的提示中。</p>
-<p>示例：</p>
-<b>元数据为：</b><br>
-<code>
-{
-“作者”：“Alex Dowson”，
-“日期”：“2024-11-12”
-}
-</code><br>
-<b>提示将为：</b><br>
-<p>文档：the_name_of_document</p>
-<p>作者：Alex Dowson</p>
-<p>日期：2024-11-12</p>
-<p>相关片段如下：</p>
-<ul>
-<li> 这是块内容....</li>
-<li> 这是块内容....</li>
-</ul>
-`,
+  <p>示例：</p>
+  <b>元数据为：</b><br>
+  <code>
+  {
+  “作者”：“Alex Dowson”，
+  “日期”：“2024-11-12”
+  }
+  </code><br>
+  <b>提示将为：</b><br>
+  <p>文档：the_name_of_document</p>
+  <p>作者：Alex Dowson</p>
+  <p>日期：2024-11-12</p>
+  <p>相关片段如下：</p>
+  <ul>
+  <li> 这是块内容....</li>
+  <li> 这是块内容....</li>
+  </ul>
+  `,
       metaData: '元数据',
       deleteDocumentConfirmContent:
         '该文档与知识图谱相关联。删除后，相关节点和关系信息将被删除，但图不会立即更新。更新图动作是在解析承载知识图谱提取任务的新文档的过程中执行的。',
@@ -197,7 +198,7 @@ export default {
       name: '知识库名称',
       photo: '知识库图片',
       description: '描述',
-      language: '语言',
+      language: '文档语言',
       languageMessage: '请输入语言',
       languagePlaceholder: '请输入语言',
       permissions: '权限',
@@ -254,14 +255,14 @@ export default {
         此块方法支持<b> excel </b>和<b> csv/txt </b>文件格式。
       </p>
       <li>
-        如果文件以<b> excel </b>格式，则应由两个列组成
+        如果文件是<b> excel </b>格式，则应由两个列组成
         没有标题：一个提出问题，另一个用于答案，
         答案列之前的问题列。多张纸是
         只要列正确结构，就可以接受。
       </li>
       <li>
-        如果文件以<b> csv/txt </b>格式为
-        用作分开问题和答案的定界符。
+        如果文件是<b> csv/txt </b>格式
+        以 UTF-8 编码且用 TAB 作分开问题和答案的定界符。
       </li>
       <p>
         <i>
@@ -270,29 +271,29 @@ export default {
         </i>
       </p>`,
       resume: `<p>支持的文件格式为<b>DOCX</b>、<b>PDF</b>、<b>TXT</b>。
-      </p><p>
-      简历有多种格式，就像一个人的个性一样，但我们经常必须将它们组织成结构化数据，以便于搜索。
-      </p><p>
-      我们不是将简历分块，而是将简历解析为结构化数据。 作为HR，你可以扔掉所有的简历，
-      您只需与<i>'RAGFlow'</i>交谈即可列出所有符合资格的候选人。
-      </p>
-        `,
-      table: `支持<p><b>XLSX</b>和<b>CSV/TXT</b>格式文件。</p><p>
-      以下是一些提示：
-      <ul>
-    <li>对于 csv 或 txt 文件，列之间的分隔符为 <em><b>TAB</b></em>。</li>
-    <li>第一行必须是列标题。</li>
-    <li>列标题必须是有意义的术语，以便我们的大语言模型能够理解。
-    列举一些同义词时最好使用斜杠<i>'/'</i>来分隔，甚至更好
-    使用方括号枚举值，例如 <i>'gender/sex(male,female)'</i>.<p>
-    以下是标题的一些示例：<ol>
-        <li>供应商/供货商<b>'TAB'</b>颜色（黄色、红色、棕色）<b>'TAB'</b>性别（男、女）<b>'TAB'</ b>尺码（M、L、XL、XXL）</li>
-        <li>姓名/名字<b>'TAB'</b>电话/手机/微信<b>'TAB'</b>最高学历（高中，职高，硕士，本科，博士，初中，中技，中 专，专科，专升本，MPA，MBA，EMBA）</li>
-        </ol>
+        </p><p>
+        简历有多种格式，就像一个人的个性一样，但我们经常必须将它们组织成结构化数据，以便于搜索。
+        </p><p>
+        我们不是将简历分块，而是将简历解析为结构化数据。 作为HR，你可以扔掉所有的简历，
+        您只需与<i>'RAGFlow'</i>交谈即可列出所有符合资格的候选人。
         </p>
-    </li>
-    <li>表中的每一行都将被视为一个块。</li>
-    </ul>`,
+          `,
+      table: `支持<p><b>XLSX</b>和<b>CSV/TXT</b>格式文件。</p><p>
+        以下是一些提示：
+        <ul>
+      <li>对于 csv 或 txt 文件，列之间的分隔符为 <em><b>TAB</b></em>。</li>
+      <li>第一行必须是列标题。</li>
+      <li>列标题必须是有意义的术语，以便我们的大语言模型能够理解。
+      列举一些同义词时最好使用斜杠<i>'/'</i>来分隔，甚至更好
+      使用方括号枚举值，例如 <i>'gender/sex(male,female)'</i>.<p>
+      以下是标题的一些示例：<ol>
+          <li>供应商/供货商<b>'TAB'</b>颜色（黄色、红色、棕色）<b>'TAB'</b>性别（男、女）<b>'TAB'</ b>尺码（M、L、XL、XXL）</li>
+          <li>姓名/名字<b>'TAB'</b>电话/手机/微信<b>'TAB'</b>最高学历（高中，职高，硕士，本科，博士，初中，中技，中 专，专科，专升本，MPA，MBA，EMBA）</li>
+          </ol>
+          </p>
+      </li>
+      <li>表中的每一行都将被视为一个块。</li>
+      </ul>`,
       picture: `
         <p>支持图像文件。 视频即将推出。</p><p>
         如果图片中有文字，则应用 OCR 提取文字作为其文字描述。
@@ -314,15 +315,15 @@ export default {
   
   注意您需要指定的条目类型。</p>`,
       tag: `<p>使用“标签”作为分块方法的知识库应该被其他知识库使用，以将标签添加到其块中，对这些块的查询也将带有标签。</p>
-<p>使用“标签”作为分块方法的知识库<b>不</b>应该参与 RAG 过程。</p>
-<p>此知识库中的块是标签的示例，它们演示了整个标签集以及块和标签之间的相关性。</p>
-
-<p>此块方法支持<b>XLSX</b>和<b>CSV/TXT</b>文件格式。</p>
-<p>如果文件为<b>XLSX</b>格式，则它应该包含两列无标题：一列用于内容，另一列用于标签，内容列位于标签列之前。可以接受多个工作表，只要列结构正确即可。</p>
-<p>如果文件为 <b>CSV/TXT</b> 格式，则必须使用 UTF-8 编码并以 TAB 作为分隔符来分隔内容和标签。</p>
-<p>在标签列中，标签之间使用英文 <b>逗号</b>。</p>
-<i>不符合上述规则的文本行将被忽略，并且每对文本将被视为一个不同的块。</i>
-`,
+  <p>使用“标签”作为分块方法的知识库<b>不</b>应该参与 RAG 过程。</p>
+  <p>此知识库中的块是标签的示例，它们演示了整个标签集以及块和标签之间的相关性。</p>
+  
+  <p>此块方法支持<b>XLSX</b>和<b>CSV/TXT</b>文件格式。</p>
+  <p>如果文件为<b>XLSX</b>格式，则它应该包含两列无标题：一列用于内容，另一列用于标签，内容列位于标签列之前。可以接受多个工作表，只要列结构正确即可。</p>
+  <p>如果文件为 <b>CSV/TXT</b> 格式，则必须使用 UTF-8 编码并以 TAB 作为分隔符来分隔内容和标签。</p>
+  <p>在标签列中，标签之间使用英文 <b>逗号</b>。</p>
+  <i>不符合上述规则的文本行将被忽略，并且每对文本将被视为一个不同的块。</i>
+  `,
       useRaptor: '使用召回增强RAPTOR策略',
       useRaptorTip: '请参考 https://huggingface.co/papers/2401.18059',
       prompt: '提示词',
@@ -366,6 +367,17 @@ export default {
         `,
       tags: '标签',
       addTag: '增加标签',
+      useGraphRag: '提取知识图谱',
+      useGraphRagTip:
+        '文件分块后，所有块将用于知识图谱生成，这对多跳和复杂问题的推理大有帮助。',
+      graphRagMethod: '方法',
+      graphRagMethodTip: `Light：实体和关系提取提示来自 GitHub - HKUDS/LightRAG：“LightRAG：简单快速的检索增强生成”<br>
+  General：实体和关系提取提示来自 GitHub - microsoft/graphrag：基于图形的模块化检索增强生成 (RAG) 系统`,
+      resolution: '实体归一化',
+      resolutionTip: `解析过程会将具有相同含义的实体合并在一起，从而使知识图谱更简洁、更准确。应合并以下实体：特朗普总统、唐纳德·特朗普、唐纳德·J·特朗普、唐纳德·约翰·特朗普`,
+      community: '社区报告生成',
+      communityTip:
+        '区块被聚集成层次化的社区，实体和关系通过更高抽象层次将每个部分连接起来。然后，我们使用 LLM 生成每个社区的摘要，称为社区报告。更多信息：https://www.microsoft.com/en-us/research/blog/graphrag-improving-global-search-via-dynamic-community-selection/',
     },
     chunk: {
       chunk: '解析块',
@@ -1103,7 +1115,8 @@ export default {
       pasteFileLink: '粘贴文件链接',
       testRun: '试运行',
       template: '模板转换',
-      templateDescription: '该组件用于排版各种组件的输出。',
+      templateDescription:
+        '该组件用于排版各种组件的输出。1、支持Jinja2模板,会先将输入转为对象后进行模版渲染2、同时保留原使用{参数}字符串替换的方式',
       emailComponent: '邮件',
       emailDescription: '发送邮件到指定邮箱',
       smtpServer: 'SMTP服务器',
@@ -1141,7 +1154,7 @@ export default {
         tab: '制表符',
         underline: '下划线',
         diagonal: '斜线',
-        minus: '减号',
+        minus: '连字符',
         semicolon: '分号',
       },
       addCategory: '新增分类',

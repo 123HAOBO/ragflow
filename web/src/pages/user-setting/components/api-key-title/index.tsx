@@ -24,7 +24,7 @@ const ApiKeyTitle = () => {
           //console.log(res.data)
           setApiKey(res.data?.data);
           saveApiKey({
-            llm_factory: '埃典科技(ideal2077.com)',
+            llm_factory: 'Ideal',
             api_key: res.data?.data.key,
           })
             .then(() => {

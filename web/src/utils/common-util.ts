@@ -1,4 +1,3 @@
-import { LLMFactory } from '@/constants/llm';
 import { IFactory } from '@/interfaces/database/llm';
 import isObject from 'lodash/isObject';
 import snakeCase from 'lodash/snakeCase';
@@ -37,7 +36,7 @@ export const formatNumberWithThousandsSeparator = (numberStr: string) => {
 };
 
 const orderFactoryList = [
-  '埃典科技(ideal2077.com)',
+  'Ideal',
   'OpenAI',
   'Moonshot',
   'PPIO',

@@ -73,7 +73,7 @@ def init_settings():
     global CHAT_MDL, EMBEDDING_MDL, RERANK_MDL, ASR_MDL, IMAGE2TEXT_MDL
     if not LIGHTEN:
         default_llm = {
-            "埃典科技(ideal2077.com)": {
+            "Ideal": {
                 "chat_model": "deepseek-r1:7b",
                 "embedding_model": "mxbai-embed-large:latest",
                 "image2text_model": "",

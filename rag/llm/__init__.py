@@ -143,7 +143,7 @@ from .tts_model import (
 )
 
 EmbeddingModel = {
-    "埃典科技(ideal2077.com)": IDOpenAIEmbed,
+    "Ideal": IDOpenAIEmbed,
     "Ollama": OllamaEmbed,
     "LocalAI": LocalAIEmbed,
     "OpenAI": OpenAIEmbed,
@@ -198,7 +198,7 @@ CvModel = {
 }
 
 ChatModel = {
-    "埃典科技(ideal2077.com)": IdealGptTurbo,
+    "Ideal": IdealGptTurbo,
     "OpenAI": GptTurbo,
     "Azure-OpenAI": AzureChat,
     "ZHIPU-AI": ZhipuChat,
